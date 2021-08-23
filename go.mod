@@ -1,4 +1,4 @@
-module asiantripstore/ATS-sdk
+module github.com/asiantripstore/ATS-sdk
 
 go 1.16
 
