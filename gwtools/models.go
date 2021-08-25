@@ -10,5 +10,6 @@ type RouteInfo struct {
 //ListRoutes ...
 type ListRoutes struct {
 	AppName    string      `json:"app_name"`
+	Host       string      `json:"host"`
 	ListRoutes []RouteInfo `json:"listRoutes"`
 }

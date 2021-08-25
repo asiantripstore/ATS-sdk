@@ -19,5 +19,6 @@ type ApiConfig struct {
 type Gateway struct {
 	Host        string `yaml:"host"`
 	Port        string `yaml:"port"`
+	HostAPI     string `yaml:"hostApi"`
 	RegisterKey string `yaml:"registerKey"`
 }
