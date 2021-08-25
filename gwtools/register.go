@@ -22,6 +22,7 @@ func RegisterToGateway(conf config.ApiConfig, route *gin.Engine) {
 		lstRoutes.ListRoutes = append(lstRoutes.ListRoutes, RouteInfo{Path: route.Path, Method: route.Method, Name: name[len(name)-1]})
 	}
 	lstRoutes.AppName = conf.Name
+	lstRoutes.Host = conf.Gateway.HostAPI
 	strRoutes, err := json.Marshal(lstRoutes)
 	if err != nil {
 		log.Errorf("Error when creating list of routes", err.Error())
