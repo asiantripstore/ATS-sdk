@@ -3,6 +3,7 @@ package user
 import (
 	"bytes"
 	"encoding/json"
+	"io"
 	"net/http"
 
 	"github.com/asiantripstore/ATS-sdk/models"
@@ -23,6 +24,17 @@ func CreateUser(gatewayHost string, gatewayPort string, user models.User) *model
 	}
 	if resp.StatusCode == 200 {
 		log.Info("New user created")
+	}
+	body, err = io.ReadAll(resp.Body)
+	if err != nil {
+		log.Errorf("Error when unmarreading response, %s", err.Error())
+		return nil
+	}
+	defer resp.Body.Close()
+	err = json.Unmarshal(body, &user)
+	if err != nil {
+		log.Errorf("Error when unmarshalling, %s", err.Error())
+		return nil
 	}
 	return &user
 }
